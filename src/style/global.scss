@@ -1,11 +1,7 @@
-// scss 全局变量
+// 全局样式（会被输出到 CSS）
+// 注意：本文件通过 style.scss 引入一次，仅负责输出全局规则
 
-// 响应式布局
-@mixin changeWidth($maxWidth: 1200px) {
-  .container {
-    max-width: $maxWidth;
-  }
-}
+@use "./variables" as *;
 
 // 首次调用
 @include changeWidth;

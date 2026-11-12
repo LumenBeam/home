@@ -8,6 +8,9 @@ GitHub：https://github.com/imsyy/home
 
 @charset "utf-8";
 
+/* 全局样式（仅在此处输出一次） */
+@use "./global" as *;
+
 /*全局样式*/
 
 html,
