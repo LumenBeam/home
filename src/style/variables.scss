@@ -1,0 +1,9 @@
+// scss 全局变量与 mixin（仅定义，不输出 CSS）
+// 该文件通过 vite.config.js 的 additionalData 注入到每个 scss 作用域
+
+// 响应式布局
+@mixin changeWidth($maxWidth: 1200px) {
+  .container {
+    max-width: $maxWidth;
+  }
+}
