@@ -1,15 +1,5 @@
 <template>
-  <div class="box cards" @mouseenter="closeShow = true" @mouseleave="closeShow = false">
-    <transition name="el-fade-in-linear">
-      <close-one
-        class="close"
-        theme="filled"
-        size="28"
-        fill="#ffffff60"
-        v-show="closeShow"
-        @click="store.boxOpenState = false"
-      />
-    </transition>
+  <div class="box" @click="store.boxOpenState = false">
     <div class="content">
       <!-- 可在此处自定义任意内容 -->
       <TimeCapsule />
@@ -19,13 +9,11 @@
 </template>
 
 <script setup>
-import { CloseOne } from "@icon-park/vue-next";
 import { mainStore } from "@/store";
 import TimeCapsule from "@/components/TimeCapsule.vue";
 import MoreContent from "@/components/MoreContent.vue";
 
 const store = mainStore();
-const closeShow = ref(false);
 </script>
 
 <style lang="scss" scoped>
@@ -36,28 +24,24 @@ const closeShow = ref(false);
   max-width: 50%;
   position: relative;
   animation: fade 0.5s;
+  cursor: pointer;
+  // 玻璃容器样式
+  border-radius: 6px;
+  background-color: rgb(0 0 0 / 12%);
+  -webkit-backdrop-filter: blur(6px) saturate(140%);
+  backdrop-filter: blur(6px) saturate(140%);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 12%),
+    0 4px 16px rgb(0 0 0 / 10%);
+  transform: scale(1);
+  // 弹性缓动，与其它卡片保持一致
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
 
   &:hover {
-    transform: scale(1);
+    transform: scale(1.03);
   }
-
-  .close {
-    position: absolute;
-    top: 14px;
-    right: 14px;
-    width: 28px;
-    height: 28px;
-    transition:
-      transform 0.3s,
-      opacity 0.3s;
-
-    &:hover {
-      transform: scale(1.2);
-    }
-
-    &:active {
-      transform: scale(1);
-    }
+  &:active {
+    transform: scale(0.98);
   }
 
   .content {

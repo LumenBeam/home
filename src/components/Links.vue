@@ -135,15 +135,16 @@ onMounted(() => {
       justify-content: center;
       padding: 0 10px;
       animation: fade 0.5s;
+      // 与 .cards 一致的弹性缓动
+      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
 
       &:hover {
-        transform: scale(1.02);
-        background: rgb(0 0 0 / 40%);
-        transition: 0.3s;
+        // 悬停只做弹性放大，不改变底色
+        transform: scale(1.05);
       }
 
       &:active {
-        transform: scale(1);
+        transform: scale(0.97);
       }
 
       .name {

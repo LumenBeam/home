@@ -104,7 +104,8 @@ onBeforeUnmount(() => {
     height: 100%;
     object-fit: cover;
     backface-visibility: hidden;
-    filter: blur(20px) brightness(0.3);
+    // 背景保持原色清晰，不做任何亮度压暗
+    filter: brightness(1);
     transition:
       filter 0.3s,
       transform 0.3s;
@@ -118,8 +119,14 @@ onBeforeUnmount(() => {
     top: 0;
     width: 100%;
     height: 100%;
-    background-image: radial-gradient(rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0.5) 100%),
-      radial-gradient(rgba(0, 0, 0, 0) 33%, rgba(0, 0, 0, 0.3) 166%);
+    // 不再压暗背景，仅在页面顶部/底部做极轻的衬底以保证页脚可读
+    background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.18) 0%,
+      rgba(0, 0, 0, 0) 12%,
+      rgba(0, 0, 0, 0) 88%,
+      rgba(0, 0, 0, 0.22) 100%
+    );
 
     transition: 1.5s;
     &.hidden {

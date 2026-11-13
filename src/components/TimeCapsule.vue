@@ -50,6 +50,7 @@ onBeforeUnmount(() => {
 <style lang="scss" scoped>
 .time-capsule {
   width: 100%;
+  // 位于 .box 容器内部，仅作为普通内容：无底色、无模糊、无动画
   .title {
     display: flex;
     flex-direction: row;
